@@ -117,10 +117,10 @@ module emu
 	// 1 - D-/TX
 	// 2..6 - USR2..USR6
 	// Set USER_OUT to 1 to read from USER_IN.
-    output  	  USER_OSD,	
-	output  [1:0] USER_MODE,
-	input   [7:0] USER_IN,
-	output  [7:0] USER_OUT,
+	output  	USER_OSD,	
+	output  [1:0]	USER_MODE,
+	input   [7:0]	USER_IN,
+	output  [7:0]	USER_OUT,
 
 	input         OSD_STATUS
 );
@@ -227,10 +227,10 @@ wire reset = RESET | buttons[1] | status[0] | cart_download | bk_loading | clear
 ////////////////////////////  HPS I/O  //////////////////////////////////
 
 // Status Bit Map:
-// 0         1         2         3
-// 01234567890123456789012345678901
-// 0123456789ABCDEFGHIJKLMNOPQRSTUV
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+// 0         1         2         3          4         5         6
+// 01234567890123456789012345678901 23456789012345678901234567890123
+// 0123456789ABCDEFGHIJKLMNOPQRSTUV 0123456789ABCDEFGHIJKLMNOPQRSTUV
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
 
 `include "build_id.v"
 parameter CONF_STR = {
@@ -1003,7 +1003,7 @@ reg bk_pending;
 always @(posedge clk_sys) begin
 	if (bk_ena && ~OSD_STATUS && bk_save_write)
 		bk_pending <= 1'b1;
-	else if (bk_state)
+	else if (bk_state | ~bk_ena)
 		bk_pending <= 1'b0;
 end
 
