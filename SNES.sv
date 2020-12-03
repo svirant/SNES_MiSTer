@@ -269,7 +269,7 @@ parameter CONF_STR = {
 		"D6P2oS,Buttons Config.,Option 1,Option 2;",
 		"P2-;",
     "D7P2O8,Serial,OFF,SNAC;",
-		"H5P2o0,SNAC Mode, 1 Player, 2 Players;", 
+		"H5P2oR,SNAC Mode, 1 Player, 2 Players;", 
     "P2-;",
     "P2OPQ,Super Scope,Disabled,Joy1,Joy2,Mouse;",    
     "D4P2OR,Super Scope Btn,Joy,Mouse;",
@@ -964,7 +964,7 @@ lightgun lightgun
 // 5 = RX-   = P4
 
 wire raw_serial = status[8];
-wire raw_serial2 = status[32];
+wire raw_serial2 = status[59];
 wire raw_db9  = |JOY_FLAG[2:1];
 
 assign USER_OUT[2] = 1'b1;
