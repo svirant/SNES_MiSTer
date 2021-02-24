@@ -336,12 +336,12 @@ parameter CONF_STR = {
     "P2-;",
     "P2OH,Multitap,Disabled,Port2;",
     "P2-;",
-		"D6P2oUV,UserIO Joystick,Off,DB9MD,DB15 ;",
-		"D6P2oT,UserIO Players, 1 Player,2 Players;",
-		"D6P2oS,Buttons Config.,Option 1,Option 2;",
+		"D7P2oUV,UserIO Joystick,Off,DB9MD,DB15 ;",
+		"D7P2oT,UserIO Players, 1 Player,2 Players;",
+		"D7P2oS,Buttons Config.,Option 1,Option 2;",
 		"P2-;",
-    "D7P2O8,Serial,OFF,SNAC;",
-		"H5P2oR,SNAC Mode, 1 Player, 2 Players;", 
+    "D8P2O8,Serial,OFF,SNAC;",
+		"H6P2oR,SNAC Mode, 1 Player, 2 Players;", 
     "P2-;",
     "P2OPQ,Super Scope,Disabled,Joy1,Joy2,Mouse;",    
     "D4P2OR,Super Scope Btn,Joy,Mouse;",
@@ -364,7 +364,7 @@ parameter CONF_STR = {
 
 wire  [1:0] buttons;
 wire [63:0] status;
-wire [15:0] status_menumask = {raw_db9, raw_serial, !raw_serial, !GUN_MODE, ~turbo_allow, ~gg_available, ~GSU_ACTIVE, ~bk_ena};
+wire [15:0] status_menumask = {raw_db9, raw_serial, !raw_serial, en216p, !GUN_MODE, ~turbo_allow, ~gg_available, ~GSU_ACTIVE, ~bk_ena};
 wire        forced_scandoubler;
 reg  [31:0] sd_lba;
 reg         sd_rd = 0;
